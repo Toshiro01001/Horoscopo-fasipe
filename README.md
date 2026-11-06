@@ -2,7 +2,7 @@
 
 ![Roda dos signos do Céu de Bolso](docs/tela.webp)
 
-Almanaque de bolso interativo, de brincadeira: uma roda de papel que gira até o seu signo, com mensagem nova todo dia, compatibilidade entre signos e cartão para baixar. Começou como página de um trabalho de faculdade e virou uma demonstração de como um site simples pode ser algo que as pessoas usam e voltam a abrir.
+Fiz este almanaque de bolso interativo, de brincadeira: uma roda de papel que gira até o seu signo, com mensagem nova todo dia, compatibilidade entre signos e cartão para baixar. Começou como página de um trabalho de faculdade e virou uma demonstração de como um site simples pode ser algo que as pessoas usam e voltam a abrir.
 
 Publicado em <https://toshiro01001.github.io/Horoscopo-fasipe/>.
 

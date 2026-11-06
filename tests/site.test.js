@@ -461,7 +461,7 @@ function varredura() {
   const sw = fs.readFileSync(path.join(RAIZ, 'sw.js'), 'utf8');
   for (const a of sw.match(/'(?:js|fonts|imagens)\/[^']+'|'style\.css'|'index\.html'/g)) ok(`arquivo do service worker existe: ${a}`, fs.existsSync(path.join(RAIZ, a.replace(/'/g, ''))));
   const leia = fs.readFileSync(path.join(RAIZ, 'README.md'), 'utf8').trimEnd().split('\n');
-  ok('README termina com a linha exata', leia[leia.length - 1] === 'Desenvolvido por Rodrigo Terroso Junior. O Claude, da Anthropic, foi usado como ferramenta durante o desenvolvimento.');
+  ok('README termina com a linha exata', leia[leia.length - 1] === 'Desenvolvi este projeto e usei o Claude, da Anthropic, como ferramenta durante o desenvolvimento.');
   ok('LICENSE e CLAUDE.md mantidos', fs.existsSync(path.join(RAIZ, 'LICENSE')) && fs.existsSync(path.join(RAIZ, 'CLAUDE.md')));
 }
 
