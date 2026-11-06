@@ -1,6 +1,6 @@
-# Horóscopo Online
+# Céu de Bolso
 
-Site estático simples, feito para um trabalho: `index.html`, `style.css` e a pasta `imagens/`.
+Site estático interativo de horóscopo, só de entretenimento, que começou como um trabalho de faculdade e hoje é demonstração da Mil e Uma Linhas!. Sem build e sem servidor: `index.html`, `style.css`, `sw.js` e as pastas `js/`, `fonts/`, `imagens/` e `tests/`. Veja o `README.md`.
 
 ## Regras de trabalho
 
@@ -11,3 +11,4 @@ Site estático simples, feito para um trabalho: `index.html`, `style.css` e a pa
 - Ao terminar uma alteração, entregue a mensagem de commit em dois blocos rotulados: "Título" (até 50 caracteres) e "Descrição" (estendida, com exatamente o que foi feito).
 - Entregue arquivos soltos, nunca em `.zip`.
 - O repositório é público: não coloque senhas, chaves secretas nem dados pessoais em arquivos versionados.
+- Rode `NODE_PATH=$(npm root -g) node tests/site.test.js` antes de entregar. Ao mudar a lista de arquivos em `sw.js`, troque `VERSAO`.

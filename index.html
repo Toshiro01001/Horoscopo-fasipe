@@ -1,107 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Horóscop Online</title>
-  <link rel="icon" href="imagens/horos.jpg">
-  <link rel="stylesheet" href="/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Céu de Bolso: descubra seu signo e a mensagem do dia</title>
+  <meta name="description" content="Almanaque de bolso de brincadeira: descubra seu signo pela data de nascimento, leia a mensagem do dia, combine dois signos e baixe um cartão. Só entretenimento, sem cadastro.">
+  <link rel="canonical" href="https://toshiro01001.github.io/Horoscopo-fasipe/">
+  <meta name="theme-color" content="#F6D04D">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Céu de Bolso">
+  <meta property="og:title" content="Céu de Bolso: gire a roda e ache seu signo">
+  <meta property="og:description" content="Mensagem nova todo dia, compatibilidade entre signos e cartão para baixar. Só entretenimento, funciona até sem internet.">
+  <meta property="og:url" content="https://toshiro01001.github.io/Horoscopo-fasipe/">
+  <meta property="og:image" content="https://toshiro01001.github.io/Horoscopo-fasipe/imagens/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Título Céu de Bolso ao lado de uma roda de papel com os doze signos.">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Céu de Bolso","url":"https://toshiro01001.github.io/Horoscopo-fasipe/","inLanguage":"pt-BR","description":"Almanaque de bolso de brincadeira com os doze signos, mensagem do dia e compatibilidade. Conteúdo de entretenimento."}</script>
+  <link rel="icon" href="imagens/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/alfa-slab-one.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="js/tema.js"></script>
+  <script src="js/dados.js" defer></script>
+  <script src="js/logica.js" defer></script>
+  <script src="js/arte.js" defer></script>
+  <script src="js/cartao.js" defer></script>
+  <script src="js/app.js" defer></script>
 </head>
 
 <body>
-  <h1> 🌟🌟 Signos do Horóscopo 🌟🌟 </h1>
+  <a class="pular" id="pular" href="#conteudo">Pular para o conteúdo</a>
 
-  <div class="signo">
-    <h2> ♒ Aquário (20/01 - 18/02) </h2>
-    <div class="info"> <strong> ELEMENTO:</strong> Ar</div>
-    <div class="info"><strong>Planeta:</strong> Urano</div>
-    <div class="info"> <strong>Características:</strong> Inovador, independente, humanitário, rebelde</div>
-  </div>
+  <header class="topo">
+    <a class="marca" href="#/">Céu de Bolso</a>
+    <nav aria-label="Principal" id="menu">
+      <a href="#/signos">Signos</a>
+      <a href="#/compatibilidade">Compatibilidade</a>
+      <a href="#/como-funciona">Como isto funciona</a>
+    </nav>
+    <button class="botao-tema" id="botao-tema" type="button">Trocar tema</button>
+  </header>
 
-  <div class="signo">
-    <h2>♓ Peixes (19/02 - 20/03)</h2>
-    <div class="info"><strong>Elemento:</strong> Água</div>
-    <div class="info"><strong>Planeta:</strong> Netuno</div>
-    <div class="info"><strong>Características:</strong> Intuitivo, compassivo, sonhador, emocional</div>
-  </div>
+  <main id="conteudo" tabindex="-1">
+    <noscript>
+      <section class="sem-js">
+        <h1>Céu de Bolso</h1>
+        <p>A roda, a mensagem do dia e o cartão precisam de JavaScript ligado. A tabela dos signos fica aqui mesmo assim. Tudo no site é entretenimento.</p>
+        <table>
+          <thead>
+            <tr><th scope="col">Signo</th><th scope="col">Datas</th><th scope="col">Elemento</th><th scope="col">Regente</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Áries</th><td>21/03 a 19/04</td><td>Fogo</td><td>Marte</td></tr>
+            <tr><th scope="row">Touro</th><td>20/04 a 20/05</td><td>Terra</td><td>Vênus</td></tr>
+            <tr><th scope="row">Gêmeos</th><td>21/05 a 20/06</td><td>Ar</td><td>Mercúrio</td></tr>
+            <tr><th scope="row">Câncer</th><td>21/06 a 22/07</td><td>Água</td><td>Lua</td></tr>
+            <tr><th scope="row">Leão</th><td>23/07 a 22/08</td><td>Fogo</td><td>Sol</td></tr>
+            <tr><th scope="row">Virgem</th><td>23/08 a 22/09</td><td>Terra</td><td>Mercúrio</td></tr>
+            <tr><th scope="row">Libra</th><td>23/09 a 22/10</td><td>Ar</td><td>Vênus</td></tr>
+            <tr><th scope="row">Escorpião</th><td>23/10 a 21/11</td><td>Água</td><td>Plutão</td></tr>
+            <tr><th scope="row">Sagitário</th><td>22/11 a 21/12</td><td>Fogo</td><td>Júpiter</td></tr>
+            <tr><th scope="row">Capricórnio</th><td>22/12 a 19/01</td><td>Terra</td><td>Saturno</td></tr>
+            <tr><th scope="row">Aquário</th><td>20/01 a 18/02</td><td>Ar</td><td>Urano</td></tr>
+            <tr><th scope="row">Peixes</th><td>19/02 a 20/03</td><td>Água</td><td>Netuno</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </noscript>
+  </main>
 
-  <div class="signo">
-    <h2>♈ Áries (21/03 - 19/04)</h2>
-    <div class="info"><strong>Elemento:</strong> Fogo</div>
-    <div class="info"><strong>Planeta:</strong> Marte</div>
-    <div class="info"><strong>Características:</strong> Corajoso, energético, impulsivo, líder natural</div>
-  </div>
-
-  <div class="signo">
-    <h2>♉ Touro (20/04 - 20/05)</h2>
-    <div class="info"><strong>Elemento:</strong> Terra</div>
-    <div class="info"><strong>Planeta:</strong> Vênus</div>
-    <div class="info"><strong>Características:</strong> Estável, determinado, prático, teimoso</div>
-  </div>
-
-  <div class="signo">
-    <h2>♊ Gêmeos (21/05 - 20/06)</h2>
-    <div class="info"><strong>Elemento:</strong> Ar</div>
-    <div class="info"><strong>Planeta:</strong> Mercúrio</div>
-    <div class="info"><strong>Características:</strong> Comunicativo, versátil, curioso, adaptável</div>
-  </div>
-
-  <div class="signo">
-    <h2>♋ Câncer (21/06 - 22/07)</h2>
-    <div class="info"><strong>Elemento:</strong> Água</div>
-    <div class="info"><strong>Planeta:</strong> Lua</div>
-    <div class="info"><strong>Características:</strong> Emotivo, protetor, intuitivo, sensível</div>
-  </div>
-
-
-  <div class="signo">
-    <h2>♌ Leão (23/07 - 22/08)</h2>
-    <div class="info"><strong>Elemento:</strong> Fogo</div>
-    <div class="info"><strong>Planeta:</strong> Sol</div>
-    <div class="info"><strong>Características:</strong> Generoso, criativo, orgulhoso, carismático</div>
-  </div>
-
-
-  <div class="signo">
-    <h2>♍ Virgem (23/08 - 22/09)</h2>
-    <div class="info"><strong>Elemento:</strong> Terra</div>
-    <div class="info"><strong>Planeta:</strong> Mercúrio</div>
-    <div class="info"><strong>Características:</strong> Perfeccionista, analítico, organizado, crítico</div>
-  </div>
-
-  <div class="signo">
-    <h2>♎ Libra (23/09 - 22/10)</h2>
-    <div class="info"><strong>Elemento:</strong> Ar</div>
-    <div class="info"><strong>Planeta:</strong> Vênus</div>
-    <div class="info"><strong>Características:</strong> Diplomático, equilibrado, charmoso, indeciso</div>
-  </div>
-
-
-  <div class="signo">
-    <h2>♏ Escorpião (23/10 - 21/11)</h2>
-    <div class="info"><strong>Elemento:</strong> Água</div>
-    <div class="info"><strong>Planeta:</strong> Plutão</div>
-    <div class="info"><strong>Características:</strong> Intenso, misterioso, determinado, ciumento</div>
-  </div>
-
-
-  <div class="signo">
-    <h2>♐ Sagitário (22/11 - 21/12)</h2>
-    <div class="info"><strong>Elemento:</strong> Fogo</div>
-    <div class="info"><strong>Planeta:</strong> Júpiter</div>
-    <div class="info"><strong>Características:</strong> Aventureiro, otimista, filosófico, impaciente</div>
-  </div>
-
-  <div class="signo">
-    <h2>♑ Capricórnio (22/12 - 19/01)</h2>
-    <div class="info"><strong>Elemento:</strong> Terra</div>
-    <div class="info"><strong>Planeta:</strong> Saturno</div>
-    <div class="info"><strong>Características:</strong> Ambicioso, disciplinado, prático, pessimista</div>
-  </div>
-
-
-
+  <footer class="rodape">
+    <div class="serrilha" aria-hidden="true"></div>
+    <div class="rodape-texto">
+      <p class="aviso"><strong>Isto é entretenimento.</strong> As mensagens são geradas por uma conta com a data, não são previsão e não substituem orientação médica, financeira ou jurídica.</p>
+      <p class="assinatura">Demonstração feita por <a href="https://mileumalinhas.com.br" rel="noopener">Mil e Uma Linhas!</a></p>
+    </div>
+  </footer>
 </body>
 
 </html>
