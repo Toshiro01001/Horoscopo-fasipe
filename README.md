@@ -6,7 +6,17 @@ Fiz este almanaque de bolso interativo, de brincadeira: uma roda de papel que gi
 
 Publicado em <https://toshiro01001.github.io/Horoscopo-fasipe/>.
 
-Todo o conteúdo é entretenimento. Os textos foram escritos para este projeto, as mensagens saem de uma conta com a data, e nada aqui serve de orientação médica, financeira ou jurídica.
+Todo o conteúdo é entretenimento. Os textos foram escritos para este projeto, as mensagens saem de uma conta com a data, e nada aqui serve de orientação médica, financeira ou jurídica. Não há cadastro, nada é vendido nem cobrado.
+
+## Como usar
+
+1. Na página inicial, escolha o dia e o mês em que você nasceu. A roda gira até o seu signo e a mensagem de hoje aparece logo abaixo.
+2. Aperte "Abrir folheto" para ver a página do signo, com a mensagem do dia e o cartão. Em "Lembrar como meu signo", o site passa a abrir já no seu signo.
+3. No cartão, aperte "Copiar imagem" ou "Baixar imagem" para guardar ou mandar a alguém.
+4. Em "Compatibilidade", escolha dois signos e leia, de brincadeira, como a dupla funciona.
+5. O botão "Trocar tema" alterna entre claro e escuro.
+
+Quem quiser saber o que roda por trás encontra a explicação na tela "Como isto funciona", que termina com um bloco "Detalhes técnicos" para quem programa, e nas seções abaixo.
 
 ## O que ele faz
 
@@ -18,7 +28,7 @@ Todo o conteúdo é entretenimento. Os textos foram escritos para este projeto, 
 - Gera um cartão em PNG para copiar ou baixar.
 - Tem tema claro e escuro e abre sem internet depois da primeira visita.
 
-## Como funciona
+## Como funciona (parte técnica)
 
 Não há servidor nem banco de dados: tudo roda no navegador.
 
