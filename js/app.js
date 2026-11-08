@@ -310,7 +310,7 @@
       el('section', { class: 'abertura' },
         el('div', { class: 'abertura-texto' },
           el('h1', { class: 'titulo-site' }, 'Céu de Bolso'),
-          el('p', { class: 'chamada' }, 'Um almanaque de papel que cabe no celular. Diga quando nasceu, a roda gira até o seu signo e, todo dia, tem uma mensagem nova. É tudo de brincadeira.'),
+          el('p', { class: 'chamada' }, 'Um almanaque de papel que cabe no celular. Escolha abaixo o dia e o mês em que você nasceu: a roda gira até o seu signo, a mensagem de hoje aparece e você pode abrir o folheto do signo. Mensagem nova todo dia. É tudo de brincadeira.'),
           form, status, acaoStatus),
         el('div', { class: 'abertura-roda' }, roda.no)),
       resultado,
@@ -419,7 +419,7 @@
     sb.no.addEventListener('change', mostrar);
     main.replaceChildren(el('section', { class: 'pagina' },
       el('h1', null, 'Compatibilidade'),
-      el('p', { class: 'chamada' }, 'Escolha dois signos. O texto olha o elemento e o modo de cada um. É uma brincadeira: não serve para decidir nada de verdade.'),
+      el('p', { class: 'chamada' }, 'Escolha dois signos nas caixas abaixo e o texto da dupla aparece na hora. Ele olha o elemento (fogo, terra, ar ou água) e o modo de cada signo. É uma brincadeira: não serve para decidir nada de verdade.'),
       el('form', { class: 'form-data', autocomplete: 'off' }, sa.campo, sb.campo),
       saida));
     mostrar();
@@ -453,7 +453,20 @@
       el('h2', { class: 'como-sub' }, 'O que este modelo não faz'),
       el('p', null, 'Ele não recebe pedido, não cobra e não guarda nada em nome de ninguém. Formulário com envio, pagamento, estoque e área do cliente pedem servidor e banco de dados, e isso muda o orçamento e o prazo.'),
       el('h2', { class: 'como-sub' }, 'Sobre o conteúdo'),
-      el('p', null, 'Os textos foram escritos para esta demonstração e são entretenimento. As frases saem de uma conta com a data, não de uma previsão, e não servem de orientação médica, financeira ou jurídica.'),
+      el('p', null, 'Os textos foram escritos para esta demonstração e são entretenimento. As frases saem de uma conta com a data, não de uma previsão, e não servem de orientação médica, financeira ou jurídica. Nada aqui é vendido nem cobrado.'),
+      el('details', { class: 'detalhes-tecnicos' },
+        el('summary', null, 'Detalhes técnicos'),
+        el('ul', null,
+          el('li', null, 'HTML, CSS e JavaScript puros, sem bibliotecas, sem framework, sem build e sem CDN. Nenhum pedido sai para outros servidores.'),
+          el('li', null, 'Página única: o JavaScript monta cada tela conforme o trecho do endereço depois do # (rotas por hash), como #/signo/leao ou #/compatibilidade.'),
+          el('li', null, 'Código dividido por função: js/dados.js (textos dos signos, frases e combinações), js/logica.js (regras puras: signo pela data, mensagem do dia, compatibilidade), js/arte.js (os 12 emblemas em SVG), js/cartao.js (desenho do cartão no canvas, cópia e download), js/app.js (rotas, roda, favorito e tema) e js/tema.js (aplica o tema antes de pintar a tela).'),
+          el('li', null, 'Mensagem do dia: data e signo viram um número pelo hash FNV-1a com mistura final, e esse número escolhe as frases nas listas. Mesma entrada, mesma mensagem, sem servidor.'),
+          el('li', null, 'Signo favorito e tema guardados no localStorage. Se o navegador bloquear, a escolha vale só até fechar a aba e o site segue funcionando.'),
+          el('li', null, 'Cartão em PNG gerado no canvas (1080 por 1350 pixels) e copiado pela Clipboard API quando o navegador permite; senão, copia o texto ou oferece o download.'),
+          el('li', null, 'Service worker (sw.js) guarda os arquivos na primeira visita, serve a cópia na hora e atualiza por trás quando há conexão. A lista de arquivos tem um número de versão que troca a cada mudança na lista.'),
+          el('li', null, 'Content Security Policy (regra do navegador que limita de onde a página pode carregar coisas) permitindo só arquivos do próprio site. Todo texto variável entra na tela por nó de texto, nunca como HTML montado em texto.'),
+          el('li', null, 'Fontes Alfa Slab One e Literata hospedadas no próprio site, com licença SIL Open Font License. O código está em domínio público.'),
+          el('li', null, 'Testes de ponta a ponta com Playwright em tests/site.test.js, percorrendo o site em 1366x800, iPhone 13 e 320 px de largura, na raiz e em subcaminho. Hospedado no GitHub Pages, repositório Toshiro01001/Horoscopo-fasipe.'))),
       el('p', { class: 'acoes' }, el('a', { class: 'botao', href: 'https://mileumalinhas.com.br', rel: 'noopener' }, 'Conhecer a Mil e Uma Linhas!'))));
   }
 

@@ -309,6 +309,10 @@ select {
 .como-linha h3 { font-family: var(--corpo); font-size: .95rem; font-weight: 750; line-height: 1.4; margin-bottom: .1em; }
 .como-linha p { margin: 0; }
 .como-sub { margin: 1.3em 0 .4em; padding-top: 18px; border-top: 5px solid var(--tinta); }
+.detalhes-tecnicos { margin: 1.3em 0 .4em; padding-top: 18px; border-top: 5px solid var(--tinta); }
+.detalhes-tecnicos summary { cursor: pointer; min-height: 44px; display: list-item; padding: .5em 0; font-weight: 750; font-size: 1.1rem; }
+.detalhes-tecnicos ul { margin: .4em 0 .8em; padding-left: 1.25em; }
+.detalhes-tecnicos li { margin-bottom: .45em; overflow-wrap: anywhere; }
 
 /* Sem JavaScript */
 .sem-js { padding: 24px var(--margem); }
