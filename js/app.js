@@ -432,7 +432,7 @@
     ['Compatibilidade', 'Regras simples: cada signo tem um elemento e um modo, e cada combinação aponta para um texto. A ordem dos dois não muda o resultado.', 'Mostrar qual peça combina com qual, que acessório serve em qual modelo ou que plano atende cada perfil.'],
     ['Meu signo lembrado', 'O navegador guarda a escolha no próprio aparelho (localStorage). Não existe conta, e o dado não sai dali. Se o navegador bloquear, o site continua funcionando e só esquece ao fechar.', 'Lembrar a unidade mais próxima ou o idioma preferido, sem obrigar ninguém a se cadastrar.'],
     ['Cartão para copiar ou baixar', 'O navegador desenha a imagem na hora (canvas), com o signo, a data e a mensagem. O arquivo nasce no aparelho de quem usa.', 'Cupom, convite, certificado ou post pronto com a marca do cliente, para a pessoa compartilhar.'],
-    ['Tema claro e escuro', 'A página segue o ajuste do aparelho e deixa trocar por um botão. As cores ficam num só lugar (variáveis CSS).', 'Trocar a paleta pela da marca sem redesenhar cada tela.'],
+    ['Tema claro e escuro', 'A página abre no Céu noturno e deixa trocar para o almanaque de papel por um botão. As cores ficam num só lugar (variáveis CSS).', 'Trocar a paleta pela da marca sem redesenhar cada tela.'],
     ['Abre sem internet', 'Na primeira visita, um pequeno programa (service worker) guarda os arquivos do site. Depois ele entrega essa cópia na hora e atualiza por trás quando há conexão.', 'Cardápio, catálogo ou programação de evento que abre mesmo com sinal ruim.']
   ];
 

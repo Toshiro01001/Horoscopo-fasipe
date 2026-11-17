@@ -1,9 +1,31 @@
 /* Desenha o cartão do dia num canvas de 1080x1350. A imagem nasce no aparelho de quem usa. */
 (function () {
   var A = window.CeuArte;
-  var PAPEIS = { fogo: '#F9B79A', terra: '#DDD27E', ar: '#B6D8EE', 'água': '#A9DFC0' };
+  var PAPEIS_DIA = { fogo: '#F9B79A', terra: '#DDD27E', ar: '#B6D8EE', 'água': '#A9DFC0' };
+  var PAPEIS_NOITE = { fogo: '#170B14', terra: '#13110A', ar: '#090F1F', 'água': '#071418' };
+  var PAPEIS = PAPEIS_DIA;
   var TINTA = '#1A1F5C';
   var SOBRE = '#A30F1E';
+  var NOITE = false;
+  /* O cartão sai na cor do tema em uso: papel de almanaque no claro, céu noturno no escuro. */
+  function paleta() {
+    NOITE = document.documentElement.dataset.tema === 'escuro';
+    PAPEIS = NOITE ? PAPEIS_NOITE : PAPEIS_DIA;
+    TINTA = NOITE ? '#EFE8D2' : '#1A1F5C';
+    SOBRE = NOITE ? '#F2B66D' : '#A30F1E';
+  }
+  /* Estrelas do cartão noturno: sempre as mesmas para o mesmo signo, sem sorteio. */
+  function estrelas(ctx, L, H, semente) {
+    var x = semente * 9301 + 49297, i;
+    function prox() { x = (x * 9301 + 49297) % 233280; return x / 233280; }
+    ctx.fillStyle = TINTA;
+    for (i = 0; i < 150; i++) {
+      var px = 60 + prox() * (L - 120), py = 60 + prox() * (H - 120), r = prox() < 0.12 ? 3.2 : 1 + prox() * 1.4;
+      ctx.globalAlpha = 0.18 + prox() * 0.5;
+      ctx.beginPath(); ctx.arc(px, py, r, 0, 6.2832); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
   var TITULO = '"Alfa Slab One", Georgia, serif';
   var CORPO = '"Literata", Georgia, serif';
 
@@ -23,11 +45,13 @@
     var ctx = canvas.getContext('2d');
     var L = canvas.width;
     var H = canvas.height;
+    paleta();
     var papel = PAPEIS[signo.elemento];
     ctx.fillStyle = papel;
     ctx.fillRect(0, 0, L, H);
+    if (NOITE) estrelas(ctx, L, H, signo.nome.length * 7 + signo.id.charCodeAt(0));
     ctx.strokeStyle = TINTA;
-    ctx.lineWidth = 14;
+    ctx.lineWidth = NOITE ? 3 : 14;
     ctx.strokeRect(34, 34, L - 68, H - 68);
     ctx.textBaseline = 'alphabetic';
 

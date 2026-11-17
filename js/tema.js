@@ -2,7 +2,6 @@
 (function () {
   var salvo = null;
   try { salvo = localStorage.getItem('ceu-de-bolso:tema'); } catch (e) { /* armazenamento bloqueado */ }
-  var escuro = false;
-  try { escuro = matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) { /* navegador antigo */ }
-  document.documentElement.dataset.tema = salvo === 'escuro' || salvo === 'claro' ? salvo : (escuro ? 'escuro' : 'claro');
+  /* Desde 17/11/2026 o site abre no Céu noturno. O tema claro (o almanaque de papel) fica para quem escolher no botão. */
+  document.documentElement.dataset.tema = salvo === 'claro' ? 'claro' : 'escuro';
 })();

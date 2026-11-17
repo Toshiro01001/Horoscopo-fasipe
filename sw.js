@@ -1,7 +1,7 @@
 /* Guarda os arquivos do site na primeira visita e os entrega mesmo sem internet.
    Mostra a cópia guardada na hora e atualiza por trás quando há conexão.
    Ao mudar a lista de arquivos, troque o número da versão. */
-var VERSAO = 'ceu-de-bolso-v1';
+var VERSAO = 'ceu-de-bolso-v2';
 var ARQUIVOS = [
   './',
   'index.html',
@@ -12,9 +12,13 @@ var ARQUIVOS = [
   'js/arte.js',
   'js/cartao.js',
   'js/app.js',
+  'js/ceu.js',
   'fonts/alfa-slab-one.woff2',
   'fonts/literata.woff2',
-  'imagens/favicon.svg'
+  'imagens/favicon.svg',
+  'imagens/grao.png',
+  'imagens/marca/cromo-m1l.webp',
+  'imagens/marca/rtj.svg'
 ];
 
 self.addEventListener('install', function (e) {

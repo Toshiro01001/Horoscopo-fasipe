@@ -379,3 +379,101 @@ select {
 @media (prefers-reduced-motion: reduce) {
   body, .roda-gira { transition: none; }
 }
+
+/* ==========================================================================
+   Céu noturno (17/11/2026): o tema escuro refeito na criação premium e agora padrão do site.
+   Preto azulado, estrelas desenhadas em js/ceu.js, duas manchas de luz que respiram nos cantos
+   (ideia do componente Nebulosa, do ProfitizeBuild, refeita em CSS) e grão de filme.
+   Os fios grossos de almanaque viram réguas finas. O tema claro continua sendo o almanaque de papel.
+   ========================================================================== */
+:root[data-tema="escuro"] {
+  --papel: #070913; --papel-claro: #121732; --tinta: #EFE8D2; --sobre: #F2B66D;
+  --c-fogo: #1C0E18; --c-terra: #17150B; --c-ar: #0C1429; --c-agua: #09181C;
+  --regua: rgba(239, 232, 210, .22); --regua-forte: rgba(239, 232, 210, .5);
+  --neb-1: rgba(88, 110, 220, .34); --neb-2: rgba(242, 182, 109, .16);
+}
+:root[data-tema="escuro"][data-elemento="fogo"] { --papel: #0C070D; --papel-claro: #21111B; --neb-1: rgba(214, 92, 96, .3); --neb-2: rgba(242, 182, 109, .2); }
+:root[data-tema="escuro"][data-elemento="terra"] { --papel: #090906; --papel-claro: #1B190D; --neb-1: rgba(160, 150, 70, .26); --neb-2: rgba(110, 150, 90, .16); }
+:root[data-tema="escuro"][data-elemento="ar"] { --papel: #060A17; --papel-claro: #111B36; --neb-1: rgba(96, 150, 235, .34); --neb-2: rgba(190, 200, 255, .14); }
+:root[data-tema="escuro"][data-elemento="água"] { --papel: #050C10; --papel-claro: #0C2026; --neb-1: rgba(60, 170, 170, .3); --neb-2: rgba(90, 120, 220, .18); }
+
+html[data-tema="escuro"] { background: var(--papel); transition: background-color .6s ease; }
+[data-tema="escuro"] body { background: none; position: relative; isolation: isolate; }
+[data-tema="escuro"] body::before { content: ""; position: fixed; inset: -20vmax; z-index: -3; pointer-events: none;
+  background: radial-gradient(38vmax 34vmax at 18% 24%, var(--neb-1), transparent 70%), radial-gradient(42vmax 36vmax at 84% 82%, var(--neb-2), transparent 70%); }
+[data-tema="escuro"] body::after { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: url("imagens/grao.png") 0 0 / 96px 96px; opacity: .55; }
+.ceu { display: none; }
+[data-tema="escuro"] .ceu { display: block; position: fixed; inset: 0; z-index: -2; width: 100%; height: 100%; pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) {
+  [data-tema="escuro"] body::before { animation: respira 16s ease-in-out infinite alternate; }
+  [data-tema="escuro"] main > * { animation: chega .7s cubic-bezier(.22, .8, .24, 1) both; }
+  [data-tema="escuro"] main > *:nth-child(2) { animation-delay: .08s; }
+  [data-tema="escuro"] main > *:nth-child(3) { animation-delay: .16s; }
+}
+@keyframes respira { from { opacity: .7; transform: scale(1) translate3d(0, 0, 0); } to { opacity: 1; transform: scale(1.08) translate3d(1.5vmax, -1vmax, 0); } }
+@keyframes chega { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+/* réguas finas no lugar dos fios grossos */
+[data-tema="escuro"] .topo { border-bottom: 1px solid var(--regua); position: sticky; top: 0; z-index: 4; background: rgba(7, 9, 19, .72); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+[data-tema="escuro"] .dia, [data-tema="escuro"] .cartao-bloco, [data-tema="escuro"] .par, [data-tema="escuro"] .como-linha, [data-tema="escuro"] .como-sub, [data-tema="escuro"] .detalhes-tecnicos { border-top: 1px solid var(--regua-forte); }
+[data-tema="escuro"] .fatos div { border-top: 1px solid var(--regua); padding-top: 8px; }
+[data-tema="escuro"] .sem-js th, [data-tema="escuro"] .sem-js td { border-bottom: 1px solid var(--regua); }
+[data-tema="escuro"] a { text-decoration-thickness: 1px; }
+[data-tema="escuro"] #menu a[aria-current="page"] { text-decoration-thickness: 2px; }
+[data-tema="escuro"] .marca { letter-spacing: .01em; }
+[data-tema="escuro"] .marca::before { content: "\2726"; margin-right: .45em; color: var(--sobre); font-size: .8em; }
+[data-tema="escuro"] :focus-visible { outline-width: 2px; }
+
+/* títulos: a mesma letra de cartaz, agora com luz */
+[data-tema="escuro"] .titulo-site, [data-tema="escuro"] .folheto-nome, [data-tema="escuro"] .pagina h1 { text-shadow: 0 0 60px rgba(239, 232, 210, .18); }
+[data-tema="escuro"] .dia-extras dt, [data-tema="escuro"] .fatos dt, [data-tema="escuro"] .campo label, [data-tema="escuro"] .dia-data, [data-tema="escuro"] .grade-datas { color: #B9B4A2; letter-spacing: .02em; }
+
+/* botões e campos */
+[data-tema="escuro"] .botao { border-width: 1px; border-radius: 999px; padding: .5em 1.4em; transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+[data-tema="escuro"] .botao:active { transform: scale(.98); }
+[data-tema="escuro"] .botao-contorno { border-color: var(--regua-forte); }
+[data-tema="escuro"] .botao-contorno:hover { background: rgba(239, 232, 210, .08); color: var(--tinta); border-color: var(--tinta); }
+[data-tema="escuro"] select { border: 1px solid var(--regua-forte); border-radius: 12px; background-color: rgba(18, 23, 50, .7); transition: border-color .2s ease; }
+[data-tema="escuro"] select:hover { border-color: var(--tinta); }
+
+/* a roda: disco de observatório, com linhas finas e o ponteiro dourado */
+[data-tema="escuro"] .roda { filter: drop-shadow(0 30px 80px rgba(0, 0, 0, .6)); }
+[data-tema="escuro"] .roda-borda { fill: rgba(18, 23, 50, .55); stroke: var(--regua-forte); stroke-width: 1.2; }
+[data-tema="escuro"] .roda-marca { stroke: var(--regua); stroke-width: 1; }
+[data-tema="escuro"] .roda-mes { fill: #B9B4A2; font-weight: 500; letter-spacing: .04em; }
+[data-tema="escuro"] .roda-cunha { stroke: var(--regua); stroke-width: 1; transition: fill .25s ease; }
+[data-tema="escuro"] .roda-fatia:hover .roda-cunha { fill: rgba(239, 232, 210, .12); }
+[data-tema="escuro"] .roda-fatia:hover { --corte: #1A2040; }
+[data-tema="escuro"] .roda-fatia:focus-visible .roda-cunha { stroke-width: 2.5; }
+[data-tema="escuro"] .roda-miolo { fill: #0A0D1E; stroke: var(--sobre); stroke-width: 1.2; }
+[data-tema="escuro"] .roda-miolo-dia { fill: #B9B4A2; }
+[data-tema="escuro"] .roda-miolo-nome { fill: var(--tinta); }
+[data-tema="escuro"] .roda-ponteiro { stroke: var(--papel); stroke-width: 2; filter: drop-shadow(0 0 10px rgba(242, 182, 109, .7)); }
+[data-tema="escuro"] .sobreimpressao { opacity: .55; }
+[data-tema="escuro"] .folheto-arte .emblema { filter: drop-shadow(0 0 50px rgba(239, 232, 210, .14)); }
+
+/* folha dos doze signos e a dupla da compatibilidade */
+[data-tema="escuro"] .grade { padding: 1px; gap: 1px; background: var(--regua); border-radius: 18px; overflow: hidden; }
+[data-tema="escuro"] .grade a { padding: 16px; transition: background-color .2s ease; }
+[data-tema="escuro"] .grade a:hover { background: rgba(239, 232, 210, .09); }
+[data-tema="escuro"] .par-emblemas span { border: 1px solid var(--regua-forte); border-radius: 16px; padding: 14px; }
+[data-tema="escuro"] .par-emblemas span + span { margin-left: 10px; }
+[data-tema="escuro"] .amostra { border-width: 1px; }
+[data-tema="escuro"] .cartao { border: 1px solid var(--regua-forte); border-radius: 14px; box-shadow: 0 30px 70px rgba(0, 0, 0, .55); }
+
+/* rodapé: sem a serrilha de papel, com a assinatura */
+[data-tema="escuro"] .rodape { background: none; color: var(--tinta); border-top: 1px solid var(--regua); margin-top: 40px; }
+[data-tema="escuro"] .serrilha { display: none; }
+[data-tema="escuro"] .rodape p { color: #B9B4A2; }
+.selo-m1l { display: inline-flex; align-items: center; gap: 16px; flex: 1 1 100%; margin-top: 6px; text-decoration: none; opacity: .92; }
+.selo-m1l:hover { opacity: 1; }
+.rodape .selo-m1l { line-height: 1; }
+.selo-m1l img:first-child { height: 38px; width: auto; }
+.selo-m1l img:last-child { height: 25px; width: auto; }
+.selo-barra { width: 1px; height: 30px; background: rgba(239, 232, 210, .4); }
+.rodape-texto .selo-m1l { order: 9; margin-top: 14px; }
+main:focus-visible { outline: none; }
+.rodape .selo-m1l { min-height: 48px; }
+
+/* título das páginas internas cabe inteiro no celular (antes "Compatibilidade" quebrava na última letra) */
+@media (max-width: 480px) { .pagina h1 { font-size: clamp(1.7rem, 9.2vw, 2.6rem); } }

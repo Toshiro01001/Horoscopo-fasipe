@@ -8,6 +8,15 @@ Publicado em <https://toshiro01001.github.io/Horoscopo-fasipe/>.
 
 Todo o conteúdo é entretenimento. Os textos foram escritos para este projeto, as mensagens saem de uma conta com a data, e nada aqui serve de orientação médica, financeira ou jurídica. Não há cadastro, nada é vendido nem cobrado.
 
+## Céu noturno (criação premium de 17/11/2026)
+
+Refiz o tema escuro e ele passou a ser o padrão do site: preto azulado, estrelas desenhadas num canvas (`js/ceu.js`), duas manchas de luz que respiram nos cantos e mudam de cor com o elemento do signo (ideia do componente Nebulosa, do ProfitizeBuild, refeita em CSS) e grão de filme. Os fios grossos de almanaque viraram réguas finas, a roda ganhou cara de disco de observatório com o ponteiro dourado, e o cartão para baixar sai na cor do tema em uso, com estrelas no fundo.
+
+O almanaque de papel não foi embora: é o tema claro, no botão "Tema claro". O rodapé leva a assinatura M1L! | RTJ (`imagens/marca/`).
+
+Sem biblioteca e sem nada de fora: a CSP é a mesma. Com "reduzir movimento" o céu fica parado e as manchas não respiram.
+
+
 ## Como usar
 
 1. Na página inicial, escolha o dia e o mês em que você nasceu. A roda gira até o seu signo e a mensagem de hoje aparece logo abaixo.
