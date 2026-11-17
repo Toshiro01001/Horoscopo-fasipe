@@ -477,3 +477,24 @@ main:focus-visible { outline: none; }
 
 /* título das páginas internas cabe inteiro no celular (antes "Compatibilidade" quebrava na última letra) */
 @media (max-width: 480px) { .pagina h1 { font-size: clamp(1.7rem, 9.2vw, 2.6rem); } }
+
+/* ---------- ilhas em React (js/premium.js): o céu em WebGL e o cartão holográfico ---------- */
+.ilhas-ceu { display: contents; }
+.ceu-gl, .holo-brilho { display: none; }
+[data-tema="escuro"] .ceu-gl { display: block; position: fixed; inset: 0; z-index: -3; pointer-events: none; opacity: 0; transition: opacity 1.2s ease; }
+html.tem-gl[data-tema="escuro"] .ceu-gl { opacity: .42; }
+html.tem-gl[data-tema="escuro"] .ceu-gl.trocando { opacity: 0; transition-duration: .38s; }
+.ceu-gl canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+html.tem-gl[data-tema="escuro"] body::before { display: none; }
+.holo { position: relative; display: block; }
+[data-tema="escuro"] .holo { --hx: .5; --hy: .5; perspective: 900px; }
+[data-tema="escuro"] .holo .cartao, [data-tema="escuro"] .holo-brilho { transform: rotateX(calc((.5 - var(--hy)) * 9deg)) rotateY(calc((var(--hx) - .5) * 11deg)); transition: transform .5s cubic-bezier(.22, .8, .24, 1), opacity .4s ease; }
+[data-tema="escuro"] .holo.holo-vivo .cartao, [data-tema="escuro"] .holo.holo-vivo .holo-brilho { transition-duration: .12s, .4s; }
+[data-tema="escuro"] .holo-brilho { display: block; position: absolute; inset: 0; border-radius: 14px; pointer-events: none; opacity: 0; mix-blend-mode: color-dodge;
+  background: radial-gradient(circle at calc(var(--hx) * 100%) calc(var(--hy) * 100%), rgba(255, 255, 255, .5), transparent 44%), linear-gradient(115deg, transparent 22%, rgba(120, 200, 255, .32) 38%, rgba(255, 180, 240, .32) 50%, rgba(255, 230, 150, .32) 62%, transparent 78%);
+  background-size: 100% 100%, 240% 240%; background-position: 0 0, calc(var(--hx) * 100%) calc(var(--hy) * 100%); }
+[data-tema="escuro"] .holo.holo-vivo .holo-brilho { opacity: .9; }
+@media (prefers-reduced-motion: no-preference) {
+  [data-tema="escuro"] .holo.holo-toque .holo-brilho { opacity: .75; background: linear-gradient(115deg, transparent 30%, rgba(120, 200, 255, .3) 42%, rgba(255, 180, 240, .3) 50%, rgba(255, 230, 150, .3) 58%, transparent 70%) 120% 0 / 300% 100% no-repeat; animation: holo-passa 7s ease-in-out infinite; }
+}
+@keyframes holo-passa { 0%, 55% { background-position: 120% 0; } 85%, 100% { background-position: -20% 0; } }

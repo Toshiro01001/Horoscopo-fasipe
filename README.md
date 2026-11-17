@@ -14,7 +14,14 @@ Refiz o tema escuro e ele passou a ser o padrão do site: preto azulado, estrela
 
 O almanaque de papel não foi embora: é o tema claro, no botão "Tema claro". O rodapé leva a assinatura M1L! | RTJ (`imagens/marca/`).
 
-Sem biblioteca e sem nada de fora: a CSP é a mesma. Com "reduzir movimento" o céu fica parado e as manchas não respiram.
+### Ilhas em React e WebGL
+
+O site continua em JavaScript puro e funciona inteiro sem elas. Os efeitos do Céu noturno são duas ilhas em React, compiladas num arquivo só (`js/premium.js`, servido do próprio site):
+
+- **Céu em WebGL:** as manchas de luz são o shader GrainGradient da Paper (Apache-2.0), montado como manda o componente Nebulosa do ProfitizeBuild, com o escuro limpo e o ajuste para tela alta. A paleta troca com o elemento do signo.
+- **Cartão holográfico:** o cartão do dia inclina na direção do ponteiro e um brilho corre por cima dele, no espírito do Holo Card. No toque, o brilho passa sozinho.
+
+Sem WebGL2, as manchas voltam a ser as do CSS. Com "reduzir movimento", o shader fica parado e o cartão não se mexe. A fonte das ilhas fica no repositório privado, em `vitrines-fonte/ceu-noturno/`, e as licenças do React e da Paper estão em `js/licencas/`. Nada vem de CDN e a CSP é a mesma de antes.
 
 
 ## Como usar
