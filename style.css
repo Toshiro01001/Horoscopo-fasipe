@@ -498,3 +498,9 @@ html.tem-gl[data-tema="escuro"] body::before { display: none; }
   [data-tema="escuro"] .holo.holo-toque .holo-brilho { opacity: .75; background: linear-gradient(115deg, transparent 30%, rgba(120, 200, 255, .3) 42%, rgba(255, 180, 240, .3) 50%, rgba(255, 230, 150, .3) 58%, transparent 70%) 120% 0 / 300% 100% no-repeat; animation: holo-passa 7s ease-in-out infinite; }
 }
 @keyframes holo-passa { 0%, 55% { background-position: 120% 0; } 85%, 100% { background-position: -20% 0; } }
+
+/* Tela de espera e versão sem JavaScript: em tela muito estreita a tabela dos signos aperta para caber. */
+@media (max-width: 360px) {
+  .sem-js table { font-size: .84rem; }
+  .sem-js th, .sem-js td { padding-right: 4px; }
+}

@@ -54,3 +54,20 @@
   document.addEventListener('visibilitychange', acordar);
   if (window.MutationObserver) new MutationObserver(acordar).observe(raiz, { attributes: true, attributeFilter: ['data-tema'] });
 })();
+
+/* Os efeitos do Céu noturno (js/premium.js: céu em WebGL e cartão holográfico) só são buscados depois
+   que a página carregou e o navegador ficou livre. Assim a primeira tela e o primeiro toque não esperam por eles. */
+(function () {
+  function buscar() {
+    var s = document.createElement('script');
+    s.src = 'js/premium.js';
+    s.async = true;
+    document.head.appendChild(s);
+  }
+  function quandoLivre() {
+    if ('requestIdleCallback' in window) requestIdleCallback(buscar, { timeout: 4000 });
+    else setTimeout(buscar, 1200);
+  }
+  if (document.readyState === 'complete') quandoLivre();
+  else window.addEventListener('load', quandoLivre, { once: true });
+})();

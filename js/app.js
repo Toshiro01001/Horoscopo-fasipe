@@ -68,6 +68,7 @@
   }
 
   /* ---------- Tema ---------- */
+  var cartoesNaTela = [];
   function rotularTema() {
     botaoTema.textContent = raiz.dataset.tema === 'escuro' ? 'Tema claro' : 'Tema escuro';
   }
@@ -76,6 +77,9 @@
     gravar(CHAVE_TEMA, raiz.dataset.tema);
     rotularTema();
     pintarPapel(raiz.dataset.elemento);
+    /* O cartão é um desenho pronto: ao trocar o tema ele é desenhado de novo, na cor nova. */
+    cartoesNaTela = cartoesNaTela.filter(function (c) { return c.canvas.isConnected; });
+    cartoesNaTela.forEach(function (c) { c.pintar(); });
   });
 
   /* ---------- Menu ---------- */
@@ -226,6 +230,8 @@
     function pintar() { C.desenhar(canvas, s, dataPorExtenso(hoje), m); }
     pintar();
     C.fontesProntas().then(pintar);
+    cartoesNaTela = cartoesNaTela.filter(function (c) { return c.canvas.isConnected; });
+    cartoesNaTela.push({ canvas: canvas, pintar: pintar });
     var textoReserva = s.nome + ', ' + dataPorExtenso(hoje) + ': ' + m.abertura + ' ' + m.elemento + ' Pequena missão: ' + m.missao + ' (Céu de Bolso, só entretenimento)';
     var copiar = el('button', { type: 'button', class: 'botao', 'data-acao': 'copiar' }, 'Copiar imagem');
     var baixar = el('button', { type: 'button', class: 'botao botao-contorno', 'data-acao': 'baixar' }, 'Baixar imagem');

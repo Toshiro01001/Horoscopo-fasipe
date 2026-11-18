@@ -256,9 +256,13 @@ async function fluxos(navegador, base, tela, comFotos) {
   await p.waitForSelector('.folheto-nome');
   const antes = await p.evaluate(() => document.documentElement.dataset.tema);
   if (comFotos) await foto(p, tela, '03-signo');
+  /* Compara o desenho inteiro pelo tamanho e pelo fim do PNG, sem ler pixels (ler pixels gera aviso do navegador). */
+  const corDoCartao = () => p.evaluate(() => { const u = document.querySelector('canvas.cartao').toDataURL(); return u.length + ':' + u.slice(-80); });
+  const cartaoAntes = await corDoCartao();
   await p.click('#botao-tema');
   const depois = await p.evaluate(() => document.documentElement.dataset.tema);
   ok(`${tag} tema troca`, antes !== depois);
+  ok(`${tag} cartão muda de cor junto com o tema, sem trocar de página`, (await corDoCartao()) !== cartaoAntes);
   await p.reload();
   await p.waitForSelector('.folheto-nome');
   ok(`${tag} tema lembrado`, (await p.evaluate(() => document.documentElement.dataset.tema)) === depois);
@@ -404,6 +408,7 @@ async function regras(navegador, base) {
   const q = await semJs.newPage();
   await q.goto(base);
   ok('sem JavaScript mostra a tabela', (await q.locator('.sem-js tbody tr').count()) === 12);
+  ok('sem JavaScript há um título principal só', (await q.locator('h1').count()) === 1 && (await q.locator('h1').innerText()) === 'Céu de Bolso');
   await semJs.close();
 
   /* Contraste em todos os papéis e nos dois temas */
@@ -465,6 +470,14 @@ function varredura() {
   const html = fs.readFileSync(path.join(RAIZ, 'index.html'), 'utf8');
   ok('CSP em meta', /http-equiv="Content-Security-Policy"/.test(html) && html.includes("default-src 'none'"));
   ok('sem caminhos absolutos no index', !/(src|href)="\//.test(html));
+  /* Pontos do Raio-X de 17/11/2026 */
+  ok('título principal já vem no HTML', (html.match(/<h1[ >]/g) || []).length === 1);
+  const desc = (html.match(/<meta name="description" content="([^"]*)"/) || [])[1] || '';
+  ok('descrição entre 120 e 155 caracteres', desc.length >= 120 && desc.length <= 155, String(desc.length));
+  const og = (html.match(/og:image" content="[^"]*\/(imagens\/[^"]+)"/) || [])[1] || '';
+  ok('imagem de compartilhamento existe e pesa até 300 KB', !!og && fs.existsSync(path.join(RAIZ, og)) && fs.statSync(path.join(RAIZ, og)).size <= 300 * 1024, og);
+  ok('efeitos do Céu noturno não seguram a primeira tela', !/<script[^>]+premium\.js/.test(html) && fs.readFileSync(path.join(RAIZ, 'js', 'ceu.js'), 'utf8').includes("'js/premium.js'"));
+  ok('sitemap aponta para a página', fs.readFileSync(path.join(RAIZ, 'sitemap.xml'), 'utf8').includes('https://toshiro01001.github.io/Horoscopo-fasipe/'));
   ok('imagem antiga removida', !fs.existsSync(path.join(RAIZ, 'imagens', 'horos.jpg')));
   const sw = fs.readFileSync(path.join(RAIZ, 'sw.js'), 'utf8');
   for (const a of sw.match(/'(?:js|fonts|imagens)\/[^']+'|'style\.css'|'index\.html'/g)) ok(`arquivo do service worker existe: ${a}`, fs.existsSync(path.join(RAIZ, a.replace(/'/g, ''))));

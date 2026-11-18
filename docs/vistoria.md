@@ -22,4 +22,13 @@ O teste do repositório proíbe a palavra `innerHTML` nos arquivos de JavaScript
 
 ## O que o Raio-X apontou (73/100)
 
-Velocidade 81, Celular 100, SEO 84, Pixel 11, Privacidade 72. Pixel da Meta, Google Analytics, CNPJ e termos de uso não se aplicam a uma demonstração sem coleta de dados. Ficam como melhorias possíveis: descrição com menos de 155 caracteres, imagem de compartilhamento abaixo de 300 KB, sitemap e menos tempo de JavaScript no carregamento do celular.
+Velocidade 81, Celular 100, SEO 84, Pixel 11, Privacidade 72. Pixel da Meta, Google Analytics, CNPJ e termos de uso não se aplicam a uma demonstração sem coleta de dados.
+
+## Correções feitas depois do Raio-X (17/11/2026)
+
+- Descrição da página com 155 caracteres.
+- Imagem de compartilhamento em `imagens/og.jpg`, com 125 KB (antes 715 KB).
+- Título principal escrito direto no HTML, para o Google e para quem abre sem JavaScript.
+- `js/premium.js` deixou de ser pedido no cabeçalho: o `js/ceu.js` busca o arquivo depois que a página carregou e o navegador ficou livre. A regra do navegador continua `script-src 'self'`.
+- O cartão do dia é desenhado de novo ao trocar o tema.
+- O sitemap já existia, no endereço do projeto. O Raio-X procurou na raiz do domínio github.io, que pertence a outro repositório.

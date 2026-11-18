@@ -1,4 +1,4 @@
-/* Gera imagens/og.png (prévia em redes sociais) a partir da própria página.
+/* Gera imagens/og.jpg (prévia em redes sociais) a partir da própria página.
    Como rodar: NODE_PATH=$(npm root -g) node tests/gerar-og.js */
 const { chromium } = require('playwright');
 const path = require('path');
@@ -13,7 +13,7 @@ const { servir } = require('./servidor');
   await p.waitForSelector('svg.roda');
   await p.evaluate(() => document.fonts.ready);
   await p.waitForTimeout(1300);
-  await p.screenshot({ path: path.join(raiz, 'imagens', 'og.png') });
+  await p.screenshot({ path: path.join(raiz, 'imagens', 'og.jpg'), type: 'jpeg', quality: 84 });
   await n.close();
   s.servidor.close();
 })();

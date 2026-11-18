@@ -1,7 +1,7 @@
 /* Guarda os arquivos do site na primeira visita e os entrega mesmo sem internet.
    Mostra a cópia guardada na hora e atualiza por trás quando há conexão.
    Ao mudar a lista de arquivos, troque o número da versão. */
-var VERSAO = 'ceu-de-bolso-v3';
+var VERSAO = 'ceu-de-bolso-v4';
 var ARQUIVOS = [
   './',
   'index.html',

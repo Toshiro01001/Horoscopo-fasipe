@@ -16,7 +16,7 @@ O almanaque de papel não foi embora: é o tema claro, no botão "Tema claro". O
 
 ### Ilhas em React e WebGL
 
-O site continua em JavaScript puro e funciona inteiro sem elas. Os efeitos do Céu noturno são duas ilhas em React, compiladas num arquivo só (`js/premium.js`, servido do próprio site):
+O site continua em JavaScript puro e funciona inteiro sem elas. Os efeitos do Céu noturno são duas ilhas em React, compiladas num arquivo só (`js/premium.js`, servido do próprio site e buscado pelo `js/ceu.js` só depois que a página carregou):
 
 - **Céu em WebGL:** as manchas de luz são o shader GrainGradient da Paper (Apache-2.0), montado como manda o componente Nebulosa do ProfitizeBuild, com o escuro limpo e o ajuste para tela alta. A paleta troca com o elemento do signo.
 - **Cartão holográfico:** o cartão do dia inclina na direção do ponteiro e um brilho corre por cima dele, no espírito do Holo Card. No toque, o brilho passa sozinho.
