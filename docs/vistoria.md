@@ -32,3 +32,7 @@ Velocidade 81, Celular 100, SEO 84, Pixel 11, Privacidade 72. Pixel da Meta, Goo
 - `js/premium.js` deixou de ser pedido no cabeçalho: o `js/ceu.js` busca o arquivo depois que a página carregou e o navegador ficou livre. A regra do navegador continua `script-src 'self'`.
 - O cartão do dia é desenhado de novo ao trocar o tema.
 - O sitemap já existia, no endereço do projeto. O Raio-X procurou na raiz do domínio github.io, que pertence a outro repositório.
+
+## Raio-X depois das correções (17/11/2026): 76/100
+
+Velocidade 83, Celular 100, SEO 95, Pixel 11, Privacidade 72. A primeira tela passou de 2,0 s para 0,8 s no 4G. O tempo de JavaScript no carregamento do celular quase não mudou (de 738 ms para 708 ms): o que pesa é ligar o céu em WebGL, que continua acontecendo logo depois da abertura.
