@@ -467,9 +467,13 @@ html[data-tema="escuro"] { background: var(--papel); transition: background-colo
 [data-tema="escuro"] .rodape p { color: #B9B4A2; }
 .selo-m1l { display: inline-flex; align-items: center; gap: 16px; flex: 1 1 100%; margin-top: 6px; text-decoration: none; opacity: .92; }
 .selo-m1l:hover { opacity: 1; }
-.rodape .selo-m1l { line-height: 1; }
+.rodape .selo-m1l { display: inline-flex; line-height: 1; }
 .selo-m1l img:first-child { height: 38px; width: auto; }
-.selo-m1l img:last-child { height: 25px; width: auto; }
+.selo-m1l .rtj-vivo img { height: 25px; width: auto; display: block; }
+/* RTJ vivo: fibras vermelhas em WebGL dentro das letras (js/assinatura.js). Sem WebGL ou com menos movimento fica a imagem parada. */
+.rtj-vivo { position: relative; display: inline-block; line-height: 0; touch-action: pan-y; }
+.rtj-vivo canvas { position: absolute; inset: 0; width: 100%; height: 100%; -webkit-mask: url("imagens/marca/rtj.svg") center / 100% 100% no-repeat; mask: url("imagens/marca/rtj.svg") center / 100% 100% no-repeat; }
+.rtj-vivo.rtj-on img { visibility: hidden; }
 .selo-barra { width: 1px; height: 30px; background: rgba(239, 232, 210, .4); }
 .rodape-texto .selo-m1l { order: 9; margin-top: 14px; }
 main:focus-visible { outline: none; }
